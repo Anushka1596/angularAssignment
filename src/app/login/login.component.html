@@ -1,0 +1,31 @@
+<div class="m-auto wrapper">
+  <div class="card">
+    <div class="card-body">
+      <div class="p-3 text-center text-dark">
+        Welcome !
+      </div>
+      <form #userForm="ngForm" name="userForm" id="userForm" class="p-4">
+        <div class="form-group">
+          <label for="email">Enter Email </label>
+          <input class="form-control" type="email" [(ngModel)]="user['email']" name="email" id="email"
+                 placeholder="Enter Username" required/>
+        </div>
+        <div class="form-group">
+          <label for="password">Enter Password </label>
+          <input type="password" class="form-control"  [(ngModel)]="user['password']" name="password" id="password"
+                 placeholder="Enter Password" required />
+        </div>
+        <div class="p-4">
+          <re-captcha class="text-center" [(ngModel)]="captcha"  name="captcha" required></re-captcha>
+        </div>
+      </form>
+      <div class="text-dark text-center">
+        {{ attempts < 3 ?  (3-attempts)+ ' attempts remaining' : 'Out of Attempts'}}
+      </div>
+        <div class="text-center">
+              <button  class="btn btn-info" (click)="login(user)" [disabled]="userForm.invalid "> Login </button>
+        </div>
+    </div>
+  </div>
+</div>
+
